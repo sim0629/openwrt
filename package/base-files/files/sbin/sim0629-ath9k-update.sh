@@ -12,7 +12,8 @@ echo "$NEW_VERSION" > /tmp/version.txt
 
 curl -u "$CRED" "http://sgm.kr:20152/ath9k.ko" -o /tmp/ath9k.ko && 2> /dev/null \
 curl -u "$CRED" "http://sgm.kr:20152/ath9k_common.ko" -o /tmp/ath9k_common.ko 2> /dev/null && \
-curl -u "$CRED" "http://sgm.kr:20152/ath9k_hw.ko" -o /tmp/ath9k_hw.ko 2> /dev/null || \
+curl -u "$CRED" "http://sgm.kr:20152/ath9k_hw.ko" -o /tmp/ath9k_hw.ko 2> /dev/null && \
+curl -u "$CRED" "http://sgm.kr:20152/mac80211.ko" -o /tmp/mac80211.ko 2> /dev/null || \
 exit 1
 
 rmmod ath9k
@@ -23,7 +24,8 @@ rmmod mac80211
 rmmod cfg80211
 rmmod compat
 
-modprobe mac80211
+modprobe cfg80211
+insmod /tmp/mac80211.ko
 modprobe ath
 insmod /tmp/ath9k_hw.ko
 insmod /tmp/ath9k_common.ko
