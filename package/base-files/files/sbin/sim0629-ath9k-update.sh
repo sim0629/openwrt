@@ -10,7 +10,8 @@ if [ "$CUR_VERSION" -ge "$NEW_VERSION" ]; then
 fi
 echo "$NEW_VERSION" > /tmp/version.txt
 
-curl -u "$CRED" "http://sgm.kr:20152/ath9k.ko" -o /tmp/ath9k.ko && 2> /dev/null \
+curl -u "$CRED" "http://sgm.kr:20152/ath.ko" -o /tmp/ath.ko 2> /dev/null && \
+curl -u "$CRED" "http://sgm.kr:20152/ath9k.ko" -o /tmp/ath9k.ko 2> /dev/null && \
 curl -u "$CRED" "http://sgm.kr:20152/ath9k_common.ko" -o /tmp/ath9k_common.ko 2> /dev/null && \
 curl -u "$CRED" "http://sgm.kr:20152/ath9k_hw.ko" -o /tmp/ath9k_hw.ko 2> /dev/null && \
 curl -u "$CRED" "http://sgm.kr:20152/mac80211.ko" -o /tmp/mac80211.ko 2> /dev/null || \
@@ -26,7 +27,7 @@ rmmod compat
 
 modprobe cfg80211
 insmod /tmp/mac80211.ko
-modprobe ath
+insmod /tmp/ath.ko
 insmod /tmp/ath9k_hw.ko
 insmod /tmp/ath9k_common.ko
 insmod /tmp/ath9k.ko
