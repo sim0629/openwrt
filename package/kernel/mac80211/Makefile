@@ -1657,14 +1657,14 @@ ifdef USE_GIT_TREE
  define Build/Prepare
 	mkdir -p $(PKG_BUILD_DIR)
 	ln -s $(CURDIR)/git-src $(PKG_BUILD_DIR)/.git
-	( cd $(PKG_BUILD_DIR); git checkout .)
+	( cd $(PKG_BUILD_DIR); git checkout .);
  endef
 else
  define Build/Prepare
 	rm -rf $(PKG_BUILD_DIR)
 	mkdir -p $(PKG_BUILD_DIR)
 	$(PKG_UNPACK)
-	$(Build/Patch)
+	$(Build/Patch);
  endef
 endif
 define Build/Prepare +=
