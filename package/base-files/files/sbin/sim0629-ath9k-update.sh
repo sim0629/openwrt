@@ -27,7 +27,7 @@ rmmod compat
 
 modprobe cfg80211
 insmod /tmp/mac80211.ko
-insmod /tmp/ath.ko
+modprobe ath
 insmod /tmp/ath9k_hw.ko
 insmod /tmp/ath9k_common.ko
 insmod /tmp/ath9k.ko
