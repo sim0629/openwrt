@@ -1,3 +1,5 @@
+**For project I-ACK, read [wiki](https://github.com/sim0629/openwrt/wiki)**
+
 This is the buildsystem for the OpenWrt Linux distribution.
 
 Please use "make menuconfig" to configure your appreciated
